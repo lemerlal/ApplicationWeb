@@ -11,8 +11,9 @@ public class VilleFranceDAOImpl {
 	Double longitudeVille1;
 	Double latitudeVille2;
 	Double longitudeVille2;
+	Double distance;
 	
-	public void findVille() throws ClassNotFoundException {
+	public Double findVille(String ville1, String ville2) throws ClassNotFoundException {
 		
 		
 		try {
@@ -20,7 +21,7 @@ public class VilleFranceDAOImpl {
 			
 			Statement statement = con.createStatement();
 			
-			ResultSet resultSetVille1 = statement.executeQuery("Select Latitude, Longitude From ville_france where Nom_commune = 'AMBERIEU EN BUGEY' LIMIT 1;");			
+			ResultSet resultSetVille1 = statement.executeQuery("Select Latitude, Longitude From ville_france where Nom_commune = '"+ville1+"' LIMIT 1;");			
 
 			while(resultSetVille1.next()) {
 				latitudeVille1 = Double.parseDouble(resultSetVille1.getString("Latitude"));
@@ -28,7 +29,7 @@ public class VilleFranceDAOImpl {
 			}
 			resultSetVille1.close();
 			
-			ResultSet resultSetVille2 = statement.executeQuery("Select Latitude, Longitude From ville_france where Nom_commune = 'AMBLEON' LIMIT 1;");
+			ResultSet resultSetVille2 = statement.executeQuery("Select Latitude, Longitude From ville_france where Nom_commune = '"+ville2+"' LIMIT 1;");
 
 			while(resultSetVille2.next()) {
 				latitudeVille2 = Double.parseDouble(resultSetVille2.getString("Latitude"));
@@ -36,7 +37,7 @@ public class VilleFranceDAOImpl {
 			}
 			resultSetVille2.close();
 			
-			double distance = distance(latitudeVille1,longitudeVille1,latitudeVille2,longitudeVille2);
+			distance = distance(latitudeVille1,longitudeVille1,latitudeVille2,longitudeVille2);
 			System.out.println("Distance : " +distance+ " Km");
 
 
@@ -45,6 +46,7 @@ public class VilleFranceDAOImpl {
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return distance;
 		
 	}
 	
