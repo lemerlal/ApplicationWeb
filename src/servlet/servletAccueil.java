@@ -31,7 +31,7 @@ public class servletAccueil extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 * Servlet permettant d'accéder à la page d'accueil si le login et le mot de passe sont correct
+	 * Servlet permettant d'accéder à la page résultat 
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
