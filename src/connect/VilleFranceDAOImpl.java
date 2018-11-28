@@ -15,6 +15,8 @@ public class VilleFranceDAOImpl {
 	Double longitudeVille2;
 	Statement statement;
 	Double distance;
+	ResultSet resultSetVille1;
+	ResultSet resultSetVille2;
 	int nb=0;
 	
 	public Double findVille(String ville1, String ville2) throws ClassNotFoundException {
@@ -32,7 +34,7 @@ public class VilleFranceDAOImpl {
 			}
 			
 			
-			ResultSet resultSetVille1 = statement.executeQuery("Select Latitude, Longitude From ville_france where Nom_commune = '"+ville1+"' LIMIT 1;");			
+			resultSetVille1 = statement.executeQuery("Select Latitude, Longitude From ville_france where Nom_commune = '"+ville1+"' LIMIT 1;");			
 		
 			while(resultSetVille1.next()) {
 				latitudeVille1 = Double.parseDouble(resultSetVille1.getString("Latitude"));
@@ -42,7 +44,7 @@ public class VilleFranceDAOImpl {
 			resultSetVille1.close();
 			
 			
-			ResultSet resultSetVille2 = statement.executeQuery("Select Latitude, Longitude From ville_france where Nom_commune = '"+ville2+"' LIMIT 1;");
+			resultSetVille2 = statement.executeQuery("Select Latitude, Longitude From ville_france where Nom_commune = '"+ville2+"' LIMIT 1;");
 		
 			while(resultSetVille2.next()) {
 				latitudeVille2 = Double.parseDouble(resultSetVille2.getString("Latitude"));
@@ -75,7 +77,7 @@ public class VilleFranceDAOImpl {
 			dist = Math.acos(dist);
 			dist = Math.toDegrees(dist);
 			dist = dist * 60 * 1.1515 * 1.609344;
-			return (dist);
+			return dist;
 		}
 	}
 
