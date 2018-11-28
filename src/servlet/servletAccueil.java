@@ -26,7 +26,6 @@ public class servletAccueil extends HttpServlet {
      */
     public servletAccueil() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 
@@ -35,7 +34,6 @@ public class servletAccueil extends HttpServlet {
 	 * Servlet permettant d'accéder à la page résultat 
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		String ville1 = request.getParameter("ville1");
 		String ville2= request.getParameter("ville2");
 		
@@ -47,15 +45,11 @@ public class servletAccueil extends HttpServlet {
 			RequestDispatcher dispat = request.getRequestDispatcher("Accueil.jsp");
 			dispat.forward(request, response);
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}catch (java.lang.NullPointerException e) {
 			RequestDispatcher dispat = request.getRequestDispatcher("index.jsp");
 			dispat.forward(request, response);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} 
 		
 		
 	}
