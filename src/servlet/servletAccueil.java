@@ -48,8 +48,8 @@ public class servletAccueil extends HttpServlet {
 			RequestDispatcher dispat = request.getRequestDispatcher("Accueil.jsp");
 			dispat.forward(request, response);
 		} catch (ClassNotFoundException e) {
-			LOGGER.log(Level.FINER,"bug"+e);;
-			e.printStackTrace();
+			LOGGER.log(Level.FINER,"bug"+e);
+			
 		}catch (java.lang.NullPointerException e) {
 			LOGGER.log(Level.FINER,"bug"+e);;
 			RequestDispatcher dispat = request.getRequestDispatcher("index.jsp");
