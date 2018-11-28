@@ -38,7 +38,7 @@ public class VilleFranceDAOImpl {
 			resultSetVille2.close();
 			
 			distance = distance(latitudeVille1,longitudeVille1,latitudeVille2,longitudeVille2);
-			System.out.println("Distance : " +distance+ " Km");
+			System.out.println("La distance est" +distance+ " Km");
 
 
 			statement.close();
