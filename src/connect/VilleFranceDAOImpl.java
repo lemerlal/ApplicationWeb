@@ -17,7 +17,7 @@ public class VilleFranceDAOImpl {
 	Double distance;
 	int nb=0;
 	
-	public Double findVille(String ville1, String ville2) throws ClassNotFoundException, SQLException {
+	public Double findVille(String ville1, String ville2) throws ClassNotFoundException {
 		latitudeVille1 = null;
 		longitudeVille1 = null;
 		latitudeVille2 = null;
