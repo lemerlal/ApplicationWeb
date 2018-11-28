@@ -4,11 +4,14 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 
 public class VilleFranceDAOImpl {
 	
+	private static final Logger LOGGER = Logger.getLogger( VilleFranceDAOImpl.class.getName() );
 	Double latitudeVille1;
 	Double longitudeVille1;
 	Double latitudeVille2;
@@ -59,6 +62,7 @@ public class VilleFranceDAOImpl {
 			
 
 		}catch (SQLException e) {
+			LOGGER.log(Level.FINER,"bug"+e);;
 			e.printStackTrace();
 		}
 		

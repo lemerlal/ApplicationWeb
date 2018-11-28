@@ -3,9 +3,13 @@ package connect;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class JDBCConfigurationSol2 {
 	
+	private static final Logger LOGGER = Logger.getLogger( VilleFranceDAOImpl.class.getName() );
+
 	private JDBCConfigurationSol2 (){
 		
 	}
@@ -23,6 +27,7 @@ public class JDBCConfigurationSol2 {
 				return connection;
 			}
 		} catch (SQLException e1) {
+			LOGGER.log(Level.FINER,"bug"+e1);;
 			e1.printStackTrace();
 		}
 		return null;

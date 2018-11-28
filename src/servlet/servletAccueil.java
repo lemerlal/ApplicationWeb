@@ -2,6 +2,8 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,6 +20,7 @@ import connect.VilleFranceDAOImpl;
  */
 @WebServlet("/accueil")
 public class servletAccueil extends HttpServlet {
+	private static final Logger LOGGER = Logger.getLogger( VilleFranceDAOImpl.class.getName() );
 	private static final long serialVersionUID = 1L;
 	VilleFranceDAOImpl villeFrance = new VilleFranceDAOImpl();
        
@@ -45,8 +48,10 @@ public class servletAccueil extends HttpServlet {
 			RequestDispatcher dispat = request.getRequestDispatcher("Accueil.jsp");
 			dispat.forward(request, response);
 		} catch (ClassNotFoundException e) {
+			LOGGER.log(Level.FINER,"bug"+e);;
 			e.printStackTrace();
 		}catch (java.lang.NullPointerException e) {
+			LOGGER.log(Level.FINER,"bug"+e);;
 			RequestDispatcher dispat = request.getRequestDispatcher("index.jsp");
 			dispat.forward(request, response);
 		} 
