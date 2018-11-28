@@ -6,6 +6,9 @@ import java.sql.SQLException;
 
 public class JDBCConfigurationSol2 {
 	
+	private JDBCConfigurationSol2 (){
+		
+	}
 	private static final String DB_Driver = "com.mysql.jdbc.Driver";
 	private static final String DB_Connection ="jdbc:mysql://127.0.0.1/ville?user=root&password=&serverTimezone=UTC";
 	
