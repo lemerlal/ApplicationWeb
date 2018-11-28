@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,6 +47,12 @@ public class servletAccueil extends HttpServlet {
 			RequestDispatcher dispat = request.getRequestDispatcher("Accueil.jsp");
 			dispat.forward(request, response);
 		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch (java.lang.NullPointerException e) {
+			RequestDispatcher dispat = request.getRequestDispatcher("index.jsp");
+			dispat.forward(request, response);
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

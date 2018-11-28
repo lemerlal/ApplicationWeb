@@ -5,47 +5,62 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.servlet.RequestDispatcher;
+
 public class VilleFranceDAOImpl {
 	
 	Double latitudeVille1;
 	Double longitudeVille1;
 	Double latitudeVille2;
 	Double longitudeVille2;
+	Statement statement;
 	Double distance;
+	int nb=0;
 	
-	public Double findVille(String ville1, String ville2) throws ClassNotFoundException {
-		
-		
+	public Double findVille(String ville1, String ville2) throws ClassNotFoundException, SQLException {
+		latitudeVille1 = null;
+		longitudeVille1 = null;
+		latitudeVille2 = null;
+		longitudeVille2 = null;
+		distance = null;
 		try {
-			Connection con =JDBCConfigurationSol2.getConnection();
 			
-			Statement statement = con.createStatement();
+			if(nb == 0) {
+				Connection con =JDBCConfigurationSol2.getConnection();
+				statement = con.createStatement();
+				nb=1;
+			}
+			
 			
 			ResultSet resultSetVille1 = statement.executeQuery("Select Latitude, Longitude From ville_france where Nom_commune = '"+ville1+"' LIMIT 1;");			
-
+		
 			while(resultSetVille1.next()) {
 				latitudeVille1 = Double.parseDouble(resultSetVille1.getString("Latitude"));
 				longitudeVille1 = Double.parseDouble(resultSetVille1.getString("Longitude"));
+
 			}
 			resultSetVille1.close();
 			
+			
 			ResultSet resultSetVille2 = statement.executeQuery("Select Latitude, Longitude From ville_france where Nom_commune = '"+ville2+"' LIMIT 1;");
-
+		
 			while(resultSetVille2.next()) {
 				latitudeVille2 = Double.parseDouble(resultSetVille2.getString("Latitude"));
 				longitudeVille2 = Double.parseDouble(resultSetVille2.getString("Longitude"));
+
 			}
 			resultSetVille2.close();
 			
+	
 			distance = distance(latitudeVille1,longitudeVille1,latitudeVille2,longitudeVille2);
-			System.out.println("La distance est" +distance+ " Km");
+			System.out.println("La distance est " +distance+ " Km");
 
-
-			statement.close();
 			
+
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		return distance;
 		
 	}
